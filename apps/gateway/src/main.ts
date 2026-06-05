@@ -1,7 +1,7 @@
-import 'dotenv/config';
-import { NestFactory } from '@nestjs/core';
-import { HttpExceptionFilter, createValidationPipe } from '@app/common';
-import { GatewayModule } from './gateway.module';
+import "dotenv/config";
+import { NestFactory } from "@nestjs/core";
+import { HttpExceptionFilter, createValidationPipe } from "@app/common";
+import { GatewayModule } from "./gateway.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(GatewayModule);

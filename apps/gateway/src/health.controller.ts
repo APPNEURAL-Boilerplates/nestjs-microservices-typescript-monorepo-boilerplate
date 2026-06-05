@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get } from "@nestjs/common";
 
 @Controller()
 export class HealthController {
@@ -6,17 +6,17 @@ export class HealthController {
   root() {
     return {
       ok: true,
-      service: 'gateway',
-      message: 'NestJS microservices monorepo is running',
+      service: "gateway",
+      message: "NestJS microservices monorepo is running",
     };
   }
 
-  @Get('health')
+  @Get("health")
   health() {
     return {
       ok: true,
-      service: 'gateway',
-      status: 'healthy',
+      service: "gateway",
+      status: "healthy",
       timestamp: new Date().toISOString(),
     };
   }

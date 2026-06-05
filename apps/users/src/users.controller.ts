@@ -1,12 +1,12 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
+import { Controller } from "@nestjs/common";
+import { MessagePattern, Payload } from "@nestjs/microservices";
 import {
   CreateUserDto,
   FindUserByIdDto,
   UserDto,
   USERS_PATTERNS,
-} from '@app/contracts';
-import { UsersService } from './users.service';
+} from "@app/contracts";
+import { UsersService } from "./users.service";
 
 @Controller()
 export class UsersController {
@@ -16,8 +16,8 @@ export class UsersController {
   health() {
     return {
       ok: true,
-      service: 'users',
-      status: 'healthy',
+      service: "users",
+      status: "healthy",
       timestamp: new Date().toISOString(),
     };
   }

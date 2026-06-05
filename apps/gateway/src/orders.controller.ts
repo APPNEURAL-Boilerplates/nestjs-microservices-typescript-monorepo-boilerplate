@@ -1,18 +1,20 @@
-import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { callRpc, getEnvNumber, ORDERS_SERVICE } from '@app/common';
+import { Body, Controller, Get, Inject, Param, Post } from "@nestjs/common";
+import { ClientProxy } from "@nestjs/microservices";
+import { callRpc, getEnvNumber, ORDERS_SERVICE } from "@app/common";
 import {
   CreateOrderDto,
   FindOrderByIdDto,
   OrderDto,
   ORDERS_PATTERNS,
-} from '@app/contracts';
+} from "@app/contracts";
 
-@Controller('orders')
+@Controller("orders")
 export class OrdersController {
-  private readonly timeoutMs = getEnvNumber('RPC_TIMEOUT_MS', 5000);
+  private readonly timeoutMs = getEnvNumber("RPC_TIMEOUT_MS", 5000);
 
-  constructor(@Inject(ORDERS_SERVICE) private readonly ordersClient: ClientProxy) {}
+  constructor(
+    @Inject(ORDERS_SERVICE) private readonly ordersClient: ClientProxy,
+  ) {}
 
   @Post()
   create(@Body() dto: CreateOrderDto): Promise<OrderDto> {
@@ -24,8 +26,8 @@ export class OrdersController {
     );
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string): Promise<OrderDto> {
+  @Get(":id")
+  findOne(@Param("id") id: string): Promise<OrderDto> {
     return callRpc<OrderDto, FindOrderByIdDto>(
       this.ordersClient,
       ORDERS_PATTERNS.FIND_ONE,

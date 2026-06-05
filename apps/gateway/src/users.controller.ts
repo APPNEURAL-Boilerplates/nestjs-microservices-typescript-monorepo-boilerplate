@@ -1,18 +1,20 @@
-import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { callRpc, getEnvNumber, USERS_SERVICE } from '@app/common';
+import { Body, Controller, Get, Inject, Param, Post } from "@nestjs/common";
+import { ClientProxy } from "@nestjs/microservices";
+import { callRpc, getEnvNumber, USERS_SERVICE } from "@app/common";
 import {
   CreateUserDto,
   FindUserByIdDto,
   UserDto,
   USERS_PATTERNS,
-} from '@app/contracts';
+} from "@app/contracts";
 
-@Controller('users')
+@Controller("users")
 export class UsersController {
-  private readonly timeoutMs = getEnvNumber('RPC_TIMEOUT_MS', 5000);
+  private readonly timeoutMs = getEnvNumber("RPC_TIMEOUT_MS", 5000);
 
-  constructor(@Inject(USERS_SERVICE) private readonly usersClient: ClientProxy) {}
+  constructor(
+    @Inject(USERS_SERVICE) private readonly usersClient: ClientProxy,
+  ) {}
 
   @Post()
   create(@Body() dto: CreateUserDto): Promise<UserDto> {
@@ -24,8 +26,8 @@ export class UsersController {
     );
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string): Promise<UserDto> {
+  @Get(":id")
+  findOne(@Param("id") id: string): Promise<UserDto> {
     return callRpc<UserDto, FindUserByIdDto>(
       this.usersClient,
       USERS_PATTERNS.FIND_ONE,

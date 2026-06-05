@@ -1,7 +1,7 @@
-import { HttpStatus, Injectable } from '@nestjs/common';
-import { RpcException } from '@nestjs/microservices';
-import { randomUUID } from 'node:crypto';
-import { CreateUserDto, UserDto } from '@app/contracts';
+import { HttpStatus, Injectable } from "@nestjs/common";
+import { RpcException } from "@nestjs/microservices";
+import { randomUUID } from "node:crypto";
+import { CreateUserDto, UserDto } from "@app/contracts";
 
 @Injectable()
 export class UsersService {
@@ -15,8 +15,8 @@ export class UsersService {
     if (duplicate) {
       throw new RpcException({
         statusCode: HttpStatus.CONFLICT,
-        code: 'USER_EMAIL_EXISTS',
-        message: 'A user with this email already exists',
+        code: "USER_EMAIL_EXISTS",
+        message: "A user with this email already exists",
       });
     }
 
@@ -37,7 +37,7 @@ export class UsersService {
     if (!user) {
       throw new RpcException({
         statusCode: HttpStatus.NOT_FOUND,
-        code: 'USER_NOT_FOUND',
+        code: "USER_NOT_FOUND",
         message: `User ${id} not found`,
       });
     }

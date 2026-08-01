@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-microservices-typescript-monorepo-boilerplate",
+  "name": "@appneural/nestjs-microservices-typescript-monorepo-boilerplate",
   "version": "1.0.0",
   "description": "NestJS microservices monorepo boilerplate with API Gateway, NATS, shared libs, and Docker Compose.",
   "private": true,
@@ -71,7 +71,11 @@
     "typescript-eslint": "^8.20.0"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "json", "ts"],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
     "rootDir": ".",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
@@ -83,7 +87,10 @@
       "^@app/contracts$": "<rootDir>/libs/contracts/src",
       "^@app/contracts/(.*)$": "<rootDir>/libs/contracts/src/$1"
     },
-    "collectCoverageFrom": ["apps/**/*.ts", "libs/**/*.ts"],
+    "collectCoverageFrom": [
+      "apps/**/*.ts",
+      "libs/**/*.ts"
+    ],
     "coverageDirectory": "./coverage",
     "testEnvironment": "node"
   }
